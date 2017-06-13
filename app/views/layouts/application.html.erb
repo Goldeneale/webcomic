@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  
+  <div class="container text-center"> <!-- Header and navbar -->
+    <%= image_tag("https://placeholder.baker.com/800x200", style: 'width:75%') %>
+  </div> 
+  
+  <%= yield %>
 
 </body>
 </html>

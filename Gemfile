@@ -44,6 +44,9 @@ gem 'hirb', '0.7.3'
 # Use Devise for user accounts
 gem 'devise', '4.2.0'
 
+# Use Paperclip for image upload/storage
+gem 'paperclip', '5.1.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -57,3 +60,7 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  #Use the PostgreSQL gem for Heroku production servers
+  gem 'pg', '0.18.4'
+end
