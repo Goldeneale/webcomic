@@ -1,11 +1,14 @@
 class PanelsController < ApplicationController
   def home
     @panel = Panel.last
-    @user = current_user
   end
   
   def new
     @image = Panel.new
+  end
+  
+  def page
+    @panel = Panel.find_by page: params[:page]
   end
   
   def create
