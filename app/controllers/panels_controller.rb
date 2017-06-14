@@ -1,6 +1,7 @@
 class PanelsController < ApplicationController
   def home
     @panel = Panel.last
+    @user = current_user
   end
   
   def new

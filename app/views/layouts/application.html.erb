@@ -12,19 +12,30 @@
   <div class="container text-center"> <!-- Header and navbar -->
     <%= image_tag("https://placeholder.baker.com/800x200", style: 'width:75%', id: "header") %>
     </br>
-    <div class="btn-group">
-      <%= link_to "Home", root_path, class: "btn btn-default" %>
-      <%= link_to "Blog", "#", class: "btn btn-default" %>
-      <% if user_signed_in? == false %>
-        <%= link_to "Log In", new_user_session_path, class: "btn btn-default" %>
-      <% end %>
+    <div class="col-md-8 col-md-offset-2 btn-group">
+      
+      <div class="pull-left">
+        <%= link_to "Home", root_path, class: "btn btn-default" %>
+        <%= link_to "Blog", "#", class: "btn btn-default" %>
+      </div>
+      
+      <div class="pull-right">
+        <% if check_rank == "god" %>
+          <%= link_to "New Page", new_panel_path, class: "btn btn-default" %>
+        <% end %>
+        <% if user_signed_in? %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-default" %>
+        <% else %>
+          <%= link_to "Log In", new_user_session_path, class: "btn btn-default" %>
+        <% end %>
+      </div>
       
     </div>
   </div> 
 
-  <div class="container">
+  <div class="container text-center">
     <% flash.each do |type, message| %>
-      <%= content_tag :div, message, class: "alert alert-#{type}" %>
+      <%= content_tag :div, message, class: "alert alert-#{type}" unless message.blank? %>
     <% end %>
   </div>
   
