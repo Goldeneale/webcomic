@@ -17,3 +17,12 @@
  /* "bootstrap-sprockets" must be imported before "boostrap" and "boostrap/variables" */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ 
+.btn-group a {
+ margin: 20px;
+}
+
+#header {
+ border-top: 20px;
+ border-radius: 50px;
+}

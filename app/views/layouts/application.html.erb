@@ -8,8 +8,14 @@
 </head>
 <body>
   
+  <div margin=10px></br></div>
   <div class="container text-center"> <!-- Header and navbar -->
-    <%= image_tag("https://placeholder.baker.com/800x200", style: 'width:75%') %>
+    <%= image_tag("https://placeholder.baker.com/800x200", style: 'width:75%', id: "header") %>
+    </br>
+    <div class="btn-group">
+      <%= link_to "Home", root_path, class: "btn btn-default" %>
+      <%= link_to "Blog", "#", class: "btn btn-default" %>
+    </div>
   </div> 
 
   <div class="container">
@@ -20,8 +26,5 @@
   
   <%= yield %>
 
-  <div class="container">
-    <p><%= Faker::Lorem.paragraphs %></p>
-  </div>
 </body>
 </html>
