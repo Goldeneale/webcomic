@@ -3,7 +3,7 @@ class PanelsController < ApplicationController
   end
   
   def new
-    @panel = Panel.new
+    @image = Panel.new
   end
   
   def create
@@ -19,7 +19,7 @@ class PanelsController < ApplicationController
   
   private
     def panel_params
-      params.require(:panel).permit(:title, :panel, :page, :width, :height, :hovertext, :comment)
+      params.require(:panel).permit(:title, :image, :page, :width, :height, :hovertext, :comment)
     end
     
 end
