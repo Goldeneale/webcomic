@@ -11,6 +11,12 @@
   <div class="container text-center"> <!-- Header and navbar -->
     <%= image_tag("https://placeholder.baker.com/800x200", style: 'width:75%') %>
   </div> 
+
+  <div class="container">
+    <% flash.each do |type, message| %>
+      <%= content_tag :div, message, class: "alert alert-#{type}" %>
+    <% end %>
+  </div>
   
   <%= yield %>
 
