@@ -1,0 +1,17 @@
+<div class="col-md-4 col-md-offset-4">
+    <div class="btn-group" role="group" aria-label="...">
+        
+        <button type="button" class="btn btn-default"><%= link_to "<<<", page_path(page: Panel.first.page) %></button>
+        
+        <% unless @panel.page == 1 %>
+            <button type="button" class="btn btn-default"><%= link_to "<--", page_path(page: @panel.page - 1) %></button>
+        <% end %>
+        
+        <% unless @panel.page == Panel.last.page %>
+            <button type="button" class="btn btn-default"><%= link_to "-->", page_path(page: @panel.page + 1) %></button>
+        <% end %>
+        
+        <button type="button" class="btn btn-default"><%= link_to ">>>", page_path(page: Panel.last.page) %></button>
+        
+    </div>
+</div>
