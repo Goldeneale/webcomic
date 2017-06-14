@@ -1,4 +1,4 @@
-class PanelController < ApplicationController
+class PanelsController < ApplicationController
   def home
   end
   

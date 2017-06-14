@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            
+            <h2 class="text-center">Create New Panel</h2>
+            <div class="well">
+                <%= form_for @panel, url: panels_path, html: {multipart: true} do |f| %>
+                    <div class="form-group">
+                        <%= f.label :title %>
+                        <%= f.text_field :title, class: 'form-control' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :panel %>
+                        <%= f.file_field :panel, class: 'form-control' %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :page %>
+                        <%= f.number_field :page, in: 1..1000, step: 1, value: 1 %>
+                        &nbsp;
+                        <%= f.label :width %>
+                        <%= f.number_field :width, in: 100..1000, step: 100, value: 600 %>
+                        &nbsp;
+                        <%= f.label :height %>
+                        <%= f.number_field :height, in: 100..1000, step: 100, value: 800 %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :hovertext, "Hover Text" %>
+                        <%= f.text_field :hovertext, class: 'form-control', placeholder: "This will show up when the panel is hovered over!" %>
+                        <%= f.label :comment %>
+                        <%= f.text_area :comment, class: 'form-control', placeholder: "A note to go beneath the panel." %>
+                    </div>
+                    <%= f.submit 'Upload', class: 'btn btn-default' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
