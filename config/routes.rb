@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'panel#home'
+  root to: 'panels#home'
   resources :panels, :only => [:new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.

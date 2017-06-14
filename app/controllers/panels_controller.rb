@@ -1,5 +1,6 @@
 class PanelsController < ApplicationController
   def home
+    @panel = Panel.last
   end
   
   def new
