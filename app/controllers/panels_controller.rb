@@ -12,7 +12,7 @@ class PanelsController < ApplicationController
   end
   
   def view
-    @panel = Panel.find(1)
+    @panels = Panel.all
   end
   
   def create

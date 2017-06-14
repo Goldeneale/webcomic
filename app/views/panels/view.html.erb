@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <%= render @panel %>    
+        <%= render partial: "panel", locals: {gallery: Panel.all} %>    
         
     </div>
     

@@ -1,3 +1,10 @@
-<div>
-    <%= image_tag @panel.image.url, width: @panel.width / 10, height: @panel.height / 10, title: @panel.hovertext %>
-</div>
+<% gallery.each do |panel| %>
+    <div class="col-md-2">
+        <%= link_to page_path(page: panel.page), class: "thumbnail" do %>
+            <%= image_tag panel.image.url, title: panel.hovertext %>
+            <div class="caption">
+                <h4><%= panel.title %></h4>
+            </div>
+        <% end %>
+    </div>
+<% end %>
