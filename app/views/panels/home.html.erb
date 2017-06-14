@@ -1,12 +1,13 @@
 <div class="container"> 
     <div class="row"> <!-- Panel and other content -->
-        <div class="col-md-4 col-md-offset-3">
-            <%= image_tag @panel.image.url, width: @panel.width, height: @panel.height, align: "middle" %>
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class='text-center'><%= @panel.title %></h2>
+            <%= image_tag @panel.image.url, width: @panel.width, height: @panel.height, title: @panel.hovertext, class: "center_panel" %>
         </div>
     </div>
     
     <div class="row"> <!-- Footer -->
-        <div class="col-md-6 col-md-offset-3 text-center">
+        <div class="well col-md-8 col-md-offset-2 text-center">
             <%= @panel.comment %>
         </div>
     </div>
