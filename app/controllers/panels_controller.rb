@@ -11,6 +11,10 @@ class PanelsController < ApplicationController
     @panel = Panel.find_by page: params[:page]
   end
   
+  def view
+    @panel = Panel.find(1)
+  end
+  
   def create
     @panel = Panel.new(panel_params)
     if @panel.save

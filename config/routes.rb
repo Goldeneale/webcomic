@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'panels#home'
   resources :panels, :only => [:new, :create]
   get 'page', to: 'panels#page'
+  get 'gallery', to: 'panels#view'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

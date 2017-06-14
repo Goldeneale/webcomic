@@ -6,4 +6,6 @@ class Panel < ActiveRecord::Base
     validates :height, presence: true
     validates_attachment :image, presence: true,
         content_type: { content_type: ["image/jpeg", "image/png"] }
+        
+
 end
