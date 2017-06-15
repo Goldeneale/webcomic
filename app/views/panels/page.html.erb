@@ -1,7 +1,9 @@
 <div class="container"> 
     <div class="row"> <!-- Panel and other content -->
         <div class="col-md-8 col-md-offset-2">
-            <h2 class='text-center'><%= @panel.title %></h2>
+            <% unless @panel.title == 'Missing' %>
+                <h2 class='text-center'><%= @panel.title %></h2>
+            <% end %>
             <%= image_tag @panel.image.url, width: @panel.width, height: @panel.height, title: @panel.hovertext, class: "center_panel" %>
         </div>
     </div>

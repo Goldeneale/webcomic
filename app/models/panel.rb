@@ -1,5 +1,5 @@
 class Panel < ActiveRecord::Base
-    has_attached_file :image, default_url: "/images/fatal-error.png"
+    has_attached_file :image, default_url: "/assets/missing404.jpeg"
     validates :title, presence: true
     validates :page, presence: true
     validates :width, presence: true

@@ -1,6 +1,10 @@
 class PanelsController < ApplicationController
   def home
-    @panel = Panel.order(:page).last
+    if Panel.exists?(Panel.all.order_home.last)
+      @panel = Panel.all.order_home.last
+    else
+      @panel = Panel.new
+    end
   end
   
   def new
@@ -8,7 +12,11 @@ class PanelsController < ApplicationController
   end
   
   def page
-    @panel = Panel.find_by page: params[:page]
+    if Panel.exists?(Panel.find_by page: params[:page])
+        @panel = Panel.find_by page: params[:page]
+    else
+        @panel = Panel.new
+    end
   end
   
   def view
@@ -16,7 +24,11 @@ class PanelsController < ApplicationController
   end
   
   def edit
-    @panel = Panel.find_by page: params[:page]
+    if Panel.exists?(Panel.find_by page: params[:page])
+      @panel = Panel.find_by page: params[:page]
+    else
+      @panel = Panel.new
+    end
     @page = @panel.page
   end
   
@@ -33,14 +45,28 @@ class PanelsController < ApplicationController
   
   def update
     @panel = Panel.find_by page: params[:old_page]
-    if @panel.update(panel_params)
-      flash[:success] = "Successfully updated panel in database."
-      redirect_to page_path(page: @panel.page)
-    else
-      flash[:failure] = @panel.errors.full_messages.join(", and")
-      redirect_to admin_edit_path(page: params[:old_page])
+    if params[:destroy_panel]
+      @panel.delete
+      flash[:warning] = "Panel deleted."
+      redirect_to gallery_path
+    else 
+      if @panel.update(panel_params)
+        flash[:success] = "Successfully updated panel in database."
+        redirect_to page_path(page: @panel.page)
+      else
+        flash[:danger] = @panel.errors.full_messages.join(", and")
+        redirect_to admin_edit_path(page: params[:old_page])
+      end
     end
     
+  end
+  
+  def first_page
+    Panel.order(:page).first.page
+  end
+  
+  def last_page
+    Panel.order(:page).last.page
   end
   
   private

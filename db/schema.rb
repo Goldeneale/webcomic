@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614065451) do
+ActiveRecord::Schema.define(version: 20170615212529) do
 
   create_table "panels", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "width"
-    t.integer  "height"
-    t.integer  "page"
-    t.string   "hovertext"
-    t.text     "comment"
+    t.string   "title",              default: "Missing"
+    t.integer  "width",              default: 800
+    t.integer  "height",             default: 420
+    t.integer  "page",               default: 9999
+    t.string   "hovertext",          default: "I just don't know what went wrong!"
+    t.text     "comment",            default: "Looks like there's nothing here. Wierd."
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
   end
 
   create_table "users", force: :cascade do |t|
