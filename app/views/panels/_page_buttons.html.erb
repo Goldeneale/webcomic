@@ -4,14 +4,14 @@
                 <% if @panel.title == 'Missing' %>
                     <li><%= link_to "Turn Back!", :back, class: "btn btn-default" %></li>
                 <% else %>
-                    <% if @panel.page != 1 %>
-                        <li><%= link_to "<<<", page_path(page: first_page), class: "btn btn-default" %></li>
-                        <li><%= link_to "<--", page_path(page: @panel.backwards.page ), class: "btn btn-default" %></li>
+                    <% if @panel.page != @first_page %>
+                        <li><%= link_to "<<<", page_path(page: @first_page), class: "btn btn-default" %></li>
+                        <li><%= link_to "<--", page_path(page: @previous_page ), class: "btn btn-default" %></li>
                     <% end %>
                     
-                    <% if @panel.page != Panel.order(:page).last.page %>
-                        <li><%= link_to "-->", page_path(page: @panel.forwards.page), class: "btn btn-default" %></li>
-                        <li><%= link_to ">>>", page_path(page: last_page), class: "btn btn-default" %></li>
+                    <% if @panel.page != @last_page %>
+                        <li><%= link_to "-->", page_path(page: @next_page), class: "btn btn-default" %></li>
+                        <li><%= link_to ">>>", page_path(page: @last_page), class: "btn btn-default" %></li>
                     <% end %>
                 <% end %>
         </ul>

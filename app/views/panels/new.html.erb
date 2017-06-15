@@ -15,7 +15,7 @@
                     </div>
                     <div class="form-group">
                         <%= f.label :page %>
-                        <%= f.number_field :page, in: 1..1000, step: 1, value: Panel.last.page+1 %>
+                        <%= f.number_field :page, in: 1..1000, step: 1, value: @last_page %>
                         &nbsp;
                         <%= f.label :width %>
                         <%= f.number_field :width, in: 100..1000, step: 100, value: 600 %>

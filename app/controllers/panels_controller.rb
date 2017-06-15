@@ -8,7 +8,16 @@ class PanelsController < ApplicationController
   end
   
   def new
-    @image = Panel.new
+    @image = Panel.new(
+      :title => "",
+      :hovertext => "",
+      :comment => ""
+      )
+    if Panel.exists?(Panel.all.order_home.last)
+      @last_page = Panel.all.order_home.last.page
+    else
+      @last_page = 1
+    end
   end
   
   def page
@@ -16,6 +25,15 @@ class PanelsController < ApplicationController
         @panel = Panel.find_by page: params[:page]
     else
         @panel = Panel.new
+    end
+    
+    @first_page = first_page
+    @last_page = last_page
+    unless @panel.page == first_page
+      @previous_page = @panel.backwards.page
+    end
+    unless @panel.page == last_page
+      @next_page = @panel.forwards.page
     end
   end
   
@@ -36,7 +54,7 @@ class PanelsController < ApplicationController
     @panel = Panel.new(panel_params)
     if @panel.save
       flash[:success] = "Successfully saved panel to database."
-      redirect_to new_panel_path
+      redirect_to page_path(page: @panel.page)
     else
       flash[:danger] = @panel.errors.full_messages.join(", and")
       redirect_to new_panel_path
