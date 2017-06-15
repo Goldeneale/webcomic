@@ -2,11 +2,11 @@
     <nav aria-label="...">
         <ul class="pager">
         <% unless @panel.page == 1 %>
-            <li><%= link_to "<<<", page_path(page: Panel.first.page), class: "btn btn-default" %></li>
+            <li><%= link_to "<<<", page_path(page: Panel.order(:page).first.page), class: "btn btn-default" %></li>
             <li><%= link_to "<--", page_path(page: @panel.page - 1), class: "btn btn-default" %></li>
         <% end %>
         
-        <% unless @panel.page == Panel.last.page %>
+        <% unless @panel.page == Panel.order(:page).last.page %>
             <li><%= link_to "-->", page_path(page: @panel.page + 1), class: "btn btn-default" %></li>
             <li><%= link_to ">>>", page_path(page: Panel.last.page), class: "btn btn-default" %></li>
         <% end %>

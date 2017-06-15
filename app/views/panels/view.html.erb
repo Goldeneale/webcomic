@@ -1,8 +1,8 @@
 <div class="container">
 
-    <div class="row">
+    <div class="row text-center">
 
-        <%= render partial: "panel", locals: {gallery: Panel.all} %>    
+        <%= render partial: "panel", locals: {gallery: Panel.order(:page)} %>    
         
     </div>
     

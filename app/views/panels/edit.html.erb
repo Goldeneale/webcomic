@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            
+            <h2 class="text-center">Edit Panel</h2>
+            <div class="well">
+                <%= form_for @panel, url: panel_path, :method => :patch, html: {multipart: true} do |f| %>
+                    <div class="form-group">
+                        <%= f.label :title %>
+                        <%= f.text_field :title, class: 'form-control', value: @panel.title %>
+                    </div>
+                    <div class="thumbnail">
+                        <%= image_tag @panel.image.url, title: @panel.hovertext %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :panel, "New Image" %>
+                        <%= f.file_field :image, class: 'form-control', value: nil %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :page %>
+                        <%= f.number_field :page, in: 1..1000, step: 1, value: @panel.page %>
+                        &nbsp;
+                        <%= f.label :width %>
+                        <%= f.number_field :width, in: 100..1000, step: 100, value: @panel.width %>
+                        &nbsp;
+                        <%= f.label :height %>
+                        <%= f.number_field :height, in: 100..1000, step: 100, value: @panel.height %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :hovertext, "Hover Text" %>
+                        <%= f.text_field :hovertext, class: 'form-control', value: @panel.hovertext %>
+                        <%= f.label :comment %>
+                        <%= f.text_area :comment, class: 'form-control', value: @panel.comment %>
+                    </div>
+                    <%= hidden_field_tag 'old_page', @page %>
+                    <%= f.submit 'Update', class: 'btn btn-default' %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

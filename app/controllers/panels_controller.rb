@@ -1,6 +1,6 @@
 class PanelsController < ApplicationController
   def home
-    @panel = Panel.last
+    @panel = Panel.order(:page).last
   end
   
   def new
@@ -15,6 +15,11 @@ class PanelsController < ApplicationController
     @panels = Panel.all
   end
   
+  def edit
+    @panel = Panel.find_by page: params[:page]
+    @page = @panel.page
+  end
+  
   def create
     @panel = Panel.new(panel_params)
     if @panel.save
@@ -24,6 +29,18 @@ class PanelsController < ApplicationController
       flash[:danger] = @panel.errors.full_messages.join(", and")
       redirect_to new_panel_path
     end
+  end
+  
+  def update
+    @panel = Panel.find_by page: params[:old_page]
+    if @panel.update(panel_params)
+      flash[:success] = "Successfully updated panel in database."
+      redirect_to page_path(page: @panel.page)
+    else
+      flash[:failure] = @panel.errors.full_messages.join(", and")
+      redirect_to admin_edit_path(page: params[:old_page])
+    end
+    
   end
   
   private
