@@ -47,6 +47,9 @@ gem 'devise', '4.2.0'
 # Use Paperclip for image upload/storage
 gem 'paperclip', '5.1.0'
 
+# Use order_query to order models
+gem 'order_query', '0.3.3'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

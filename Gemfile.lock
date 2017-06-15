@@ -98,6 +98,9 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
+    order_query (0.3.3)
+      activerecord (>= 4.0, < 6.0)
+      activesupport (>= 4.0, < 6.0)
     orm_adapter (0.5.0)
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
@@ -190,6 +193,7 @@ DEPENDENCIES
   hirb (= 0.7.3)
   jbuilder (~> 2.0)
   jquery-rails
+  order_query (= 0.3.3)
   paperclip (= 5.1.0)
   pg (= 0.18.4)
   rails (= 5.0.0)
